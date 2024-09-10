@@ -12,10 +12,17 @@ namespace DataBaseCodeFirst.Models
         public string Name { get; set; }
 
         [Column("StudentGender", TypeName = "varchar(20)")]
-        public string Gender { get; set; }
+        [Required(ErrorMessage = "Select Gender")]
+        public Gender? Gender { get; set; }
         public int Age { get; set; }
 
         [Column("StudentDepartment", TypeName = "varchar(100)")]
         public string Department { get; set; }
+    }
+
+    //enum is used to define constants
+    public enum Gender
+    {
+        Male, Female
     }
 }

@@ -1,5 +1,6 @@
 using DataBaseCodeFirst.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
@@ -70,6 +71,14 @@ namespace DataBaseCodeFirst.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
+            List<SelectListItem> Gender = new()
+            {
+                new SelectListItem{Value="Male", Text="Male"},
+                new SelectListItem{Value="Female", Text="Female"}
+            };
+
+            ViewBag.Gender = Gender;
+
             if (id == null || studentDBContext.Students == null)
             {
                 return NotFound(); //handle error
